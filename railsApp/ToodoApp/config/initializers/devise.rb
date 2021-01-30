@@ -18,24 +18,30 @@ Devise.setup do |config|
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
+  # Deviseのコントローラクラス名
   # config.parent_controller = 'DeviseController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  # 送信者のメールアドレス
+  # config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
+  # メール送信処理を行うクラス名
   # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
+  # メールを送信処理を行う親クラス名
   # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
+  # 読み込むORMの指定
+  # ORM: オブジェクト・リレーショナル・マッピング
   require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
@@ -46,6 +52,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
+  # ユーザ認証時に使用するキーの設定
   # config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
@@ -53,22 +60,26 @@ Devise.setup do |config|
   # find_for_authentication method and considered in your model lookup. For instance,
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
+  # 認証に使用するリクエストオブジェクト
   # config.request_keys = []
 
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
+  # 大文字と小文字を区別しないキーを設定。
   config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
+  # 大文字と小文字を区別しないキーを設定。
   config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
   # given strategies, for example, `config.params_authenticatable = [:database]` will
   # enable it only for database (email + password) authentication.
+  # 空白を除外するキーを設定。
   # config.params_authenticatable = true
 
   # Tell if authentication through HTTP Auth is enabled. False by default.
@@ -79,9 +90,11 @@ Devise.setup do |config|
   # enable this with :database unless you are using a custom strategy.
   # The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
+  # パラメーターリクエストでの認証を許可するか。
   # config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
+  # Ajaxで認証したい場合はfalse。
   # config.http_authenticatable_on_xhr = true
 
   # The realm used in Http Basic Authentication. 'Application' by default.
@@ -90,6 +103,7 @@ Devise.setup do |config|
   # It will change confirmation, password recovery and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
   # Does not affect registerable.
+  # Basic認証を使用する範囲。
   # config.paranoid = true
 
   # By default Devise will store the user in session. You can skip storage for
@@ -97,19 +111,25 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
+  # パスワード変更を要求された際の動作を、入力されたemailの正誤に関わらず同じように振る舞うかどうか。
   config.skip_session_storage = [:http_auth]
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
   # requests for sign in and sign up, you need to get a new CSRF token
   # from the server. You can disable this option at your own risk.
+  # 新しいトークン発行を許可するか？
   # config.clean_up_csrf_token_on_authentication = true
 
   # When false, Devise will not attempt to reload routes on eager load.
   # This can reduce the time taken to boot the app but if your application
   # requires the Devise mappings to be loaded during boot time the application
   # won't boot properly.
+  # リロードするかどうか。
   # config.reload_routes = true
+
+  
+  # データベース認証
 
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 12. If
@@ -244,7 +264,8 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  # カスタムViewを使用
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

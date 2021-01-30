@@ -1,8 +1,8 @@
 require "test_helper"
 
-class PagesControllerTest < ActionDispatch::IntegrationTest
+class MemoControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get pages_index_url
+    get memo_index_url
     assert_response :success
   end
 end
