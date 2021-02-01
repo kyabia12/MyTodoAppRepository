@@ -1,2 +1,22 @@
-<h1>Memo#index</h1>
-<p>Find me in app/views/memo/index.html.erb</p>
+<h1>メモ一覧</h1>
+<%= link_to '新規作成', new_memo_path %>
+<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<table>
+    <tr>
+       <th>ID<th>
+       <th>title<th>
+       <th>content<th>
+       <th>date<th>
+       <th colspan="2"><th>
+    </tr>
+    <% @memos.each do |memo| %>
+    <tr>
+       <td><%= memo.id %><td>
+       <td><%= memo.title %><td>
+       <td><%= memo.content %><td>
+       <td><%= memo.updated_at.strftime('%Y/%m/%d %H:%M') %><td>
+       <td><%= link_to '削除', memo_path(memo.id), method: :delete %><td>
+       <td><%= link_to '編集', edit_memo_path(memo.id) %><td>
+    </tr>
+    <% end %>
+</table>
